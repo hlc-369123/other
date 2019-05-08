@@ -1,0 +1,889 @@
+[root@xsky-vmware-3 velen]# ./sds-tools check-postgres --help
+usage: sds-tools [-h] [-v] {replace-ssd-cache-v31,report-pool-usage} ...
+sds-tools: error: invalid choice: 'check-postgres' (choose from 'replace-ssd-cache-v31', 'report-pool-usage')
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# ./sds-tools report-pool-usage
+usage: sds-tools report-pool-usage [options]
+sds-tools report-pool-usage: error: argument --pool is required
+[root@xsky-vmware-3 velen]# ./sds-tools report-pool-usage --format=json
+usage: sds-tools report-pool-usage [options]
+sds-tools report-pool-usage: error: argument --pool is required
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# ./sds-tools replace-ssd-cache-v31 --current-disk=sdf --new-disk=sdg ^C
+[root@xsky-vmware-3 velen]# lsblk
+NAME                                                                                       MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda                                                                                          8:0    0 931.5G  0 disk 
+└─sda1                                                                                       8:1    0 931.5G  0 part /
+sdb                                                                                          8:16   0 931.5G  0 disk 
+├─sdb1                                                                                       8:17   0   100M  0 part /var/lib/ceph/osd/ceph-3
+└─sdb2                                                                                       8:18   0 931.4G  0 part 
+sdc                                                                                          8:32   0 931.5G  0 disk 
+├─sdc1                                                                                       8:33   0   100M  0 part /var/lib/ceph/osd/ceph-2
+└─sdc2                                                                                       8:34   0 931.4G  0 part 
+sdd                                                                                          8:48   0 931.5G  0 disk 
+├─sdd1                                                                                       8:49   0   100M  0 part /var/lib/ceph/osd/ceph-0
+└─sdd2                                                                                       8:50   0 931.4G  0 part 
+sde                                                                                          8:64   0 931.5G  0 disk 
+├─sde1                                                                                       8:65   0   100M  0 part /var/lib/ceph/osd/ceph-1
+└─sde2                                                                                       8:66   0 931.4G  0 part 
+sdf                                                                                          8:80   0 372.6G  0 disk 
+sdg                                                                                          8:96   0 372.6G  0 disk 
+├─sdg1                                                                                       8:97   0    42G  0 part /var/lib/ceph/omap/4
+├─sdg2                                                                                       8:98   0  82.7G  0 part 
+├─sdg3                                                                                       8:99   0  82.7G  0 part 
+├─sdg4                                                                                       8:100  0  82.7G  0 part 
+└─sdg5                                                                                       8:101  0  82.7G  0 part 
+loop0                                                                                        7:0    0   100G  0 loop 
+└─docker-8:1-2149998728-pool                                                               253:0    0   100G  0 dm   
+  ├─docker-8:1-2149998728-3b2ce478f35a36085d2c82eb376743a5bd28a150edbf922a9236376a3bb83d31 253:2    0    10G  0 dm   
+  ├─docker-8:1-2149998728-b03cac468a532bfed8609e86eaec7795cd2618313f1e2da24c9a7bffc8005c0d 253:3    0    10G  0 dm   
+  ├─docker-8:1-2149998728-386f52b58e478ba887bb1fe44c4e509bf4e0232f13ea4f1719927aeffa2432bd 253:4    0    10G  0 dm   
+  ├─docker-8:1-2149998728-6c5c67b31f1a4e69b22369d4aa785e4c66eda8fa77ad9047f978a0f4c0ad2a83 253:5    0    10G  0 dm   
+  └─docker-8:1-2149998728-a6692d1bc01bcd22bd1b83e8b0c112730571a6aee61554c3fa83c3131372f3f4 253:6    0    10G  0 dm   
+loop1                                                                                        7:1    0     2G  0 loop 
+└─docker-8:1-2149998728-pool                                                               253:0    0   100G  0 dm   
+  ├─docker-8:1-2149998728-3b2ce478f35a36085d2c82eb376743a5bd28a150edbf922a9236376a3bb83d31 253:2    0    10G  0 dm   
+  ├─docker-8:1-2149998728-b03cac468a532bfed8609e86eaec7795cd2618313f1e2da24c9a7bffc8005c0d 253:3    0    10G  0 dm   
+  ├─docker-8:1-2149998728-386f52b58e478ba887bb1fe44c4e509bf4e0232f13ea4f1719927aeffa2432bd 253:4    0    10G  0 dm   
+  ├─docker-8:1-2149998728-6c5c67b31f1a4e69b22369d4aa785e4c66eda8fa77ad9047f978a0f4c0ad2a83 253:5    0    10G  0 dm   
+  └─docker-8:1-2149998728-a6692d1bc01bcd22bd1b83e8b0c112730571a6aee61554c3fa83c3131372f3f4 253:6    0    10G  0 dm   
+[root@xsky-vmware-3 velen]# ./sds-tools replace-ssd-cache-v31 --current-disk=sdg --new-disk=sdf
+2019-05-07T17:10:55 - tools.replace_ssd_cache_v31 - INFO - replace-ssd-cache-v31 is called
+etcd client v3
+db/master 10.0.11.86
+
+etcd client v3
+primary 10.0.11.86
+
+etcd client v3
+{'device': '/dev/sdg', 'wwid': 'wwn-0x55cd2e404c276cda'}
+{'device': '/dev/sdf', 'wwid': 'wwn-0x55cd2e404c276eb1'}
+4 partitions on /dev/sdg
+	1 b7732e2a-87d2-4b19-a56b-6a5addbebd0c /dev/sdg2
+	2 ea7c7179-9d32-42a2-946c-b3ec2cabc15a /dev/sdg3
+	3 c7c7ccd6-a8ed-46b0-8344-f864f3e0ea36 /dev/sdg4
+	4 6fddaec7-76ae-4a69-a59d-713903a738f0 /dev/sdg5
+4 OSDs use cache disk /dev/sdg
+	1 osd.0 sdd
+	2 osd.1 sde
+	3 osd.2 sdc
+	4 osd.3 sdb
+2019-05-07T17:11:03 - util - INFO - Stop service xmsd
+2019-05-07T17:11:03 - util - INFO - Stop service ceph-osd@0
+2019-05-07T17:11:10 - util - INFO - umount /var/lib/ceph/osd/ceph-0
+2019-05-07T17:11:10 - util - INFO - Stop service ceph-osd@1
+2019-05-07T17:11:17 - util - INFO - umount /var/lib/ceph/osd/ceph-1
+2019-05-07T17:11:17 - util - INFO - Stop service ceph-osd@2
+2019-05-07T17:11:25 - util - INFO - umount /var/lib/ceph/osd/ceph-2
+2019-05-07T17:11:25 - util - INFO - Stop service ceph-osd@3
+2019-05-07T17:11:32 - util - INFO - umount /var/lib/ceph/osd/ceph-3
+2019-05-07T17:11:32 - util - INFO - umount /var/lib/ceph/omap/4
+2019-05-07T17:11:32 - tools.replace_ssd_cache_v31 - INFO - dd if=/dev/sdg of=/dev/sdf bs=1M iflag=direct oflag=direct,dsync
+记录了381554+1 的读入
+记录了381554+1 的写出
+400088457216字节(400 GB)已复制，2624.72 秒，152 MB/秒
+2019-05-07T17:55:17 - tools.replace_ssd_cache_v31 - INFO - Replace /dev/sdg with /dev/sdf in database
+2019-05-07T17:55:18 - tools.replace_ssd_cache_v31 - INFO - SSD cache disk replace successfully.
+MUST DO: Remove disk /dev/sdf firstly, and then restart machine
+[root@xsky-vmware-3 velen]# lsblk
+NAME                                                                                       MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda                                                                                          8:0    0 931.5G  0 disk 
+└─sda1                                                                                       8:1    0 931.5G  0 part /
+sdb                                                                                          8:16   0 931.5G  0 disk 
+├─sdb1                                                                                       8:17   0   100M  0 part 
+└─sdb2                                                                                       8:18   0 931.4G  0 part 
+sdc                                                                                          8:32   0 931.5G  0 disk 
+├─sdc1                                                                                       8:33   0   100M  0 part 
+└─sdc2                                                                                       8:34   0 931.4G  0 part 
+sdd                                                                                          8:48   0 931.5G  0 disk 
+├─sdd1                                                                                       8:49   0   100M  0 part 
+└─sdd2                                                                                       8:50   0 931.4G  0 part 
+sde                                                                                          8:64   0 931.5G  0 disk 
+├─sde1                                                                                       8:65   0   100M  0 part 
+└─sde2                                                                                       8:66   0 931.4G  0 part 
+sdf                                                                                          8:80   0 372.6G  0 disk 
+├─sdf1                                                                                       8:81   0    42G  0 part 
+├─sdf2                                                                                       8:82   0  82.7G  0 part 
+├─sdf3                                                                                       8:83   0  82.7G  0 part 
+├─sdf4                                                                                       8:84   0  82.7G  0 part 
+└─sdf5                                                                                       8:85   0  82.7G  0 part 
+sdg                                                                                          8:96   0 372.6G  0 disk 
+├─sdg1                                                                                       8:97   0    42G  0 part 
+├─sdg2                                                                                       8:98   0  82.7G  0 part 
+├─sdg3                                                                                       8:99   0  82.7G  0 part 
+├─sdg4                                                                                       8:100  0  82.7G  0 part 
+└─sdg5                                                                                       8:101  0  82.7G  0 part 
+loop0                                                                                        7:0    0   100G  0 loop 
+└─docker-8:1-2149998728-pool                                                               253:0    0   100G  0 dm   
+  ├─docker-8:1-2149998728-3b2ce478f35a36085d2c82eb376743a5bd28a150edbf922a9236376a3bb83d31 253:2    0    10G  0 dm   
+  ├─docker-8:1-2149998728-b03cac468a532bfed8609e86eaec7795cd2618313f1e2da24c9a7bffc8005c0d 253:3    0    10G  0 dm   
+  ├─docker-8:1-2149998728-386f52b58e478ba887bb1fe44c4e509bf4e0232f13ea4f1719927aeffa2432bd 253:4    0    10G  0 dm   
+  ├─docker-8:1-2149998728-6c5c67b31f1a4e69b22369d4aa785e4c66eda8fa77ad9047f978a0f4c0ad2a83 253:5    0    10G  0 dm   
+  └─docker-8:1-2149998728-a6692d1bc01bcd22bd1b83e8b0c112730571a6aee61554c3fa83c3131372f3f4 253:6    0    10G  0 dm   
+loop1                                                                                        7:1    0     2G  0 loop 
+└─docker-8:1-2149998728-pool                                                               253:0    0   100G  0 dm   
+  ├─docker-8:1-2149998728-3b2ce478f35a36085d2c82eb376743a5bd28a150edbf922a9236376a3bb83d31 253:2    0    10G  0 dm   
+  ├─docker-8:1-2149998728-b03cac468a532bfed8609e86eaec7795cd2618313f1e2da24c9a7bffc8005c0d 253:3    0    10G  0 dm   
+  ├─docker-8:1-2149998728-386f52b58e478ba887bb1fe44c4e509bf4e0232f13ea4f1719927aeffa2432bd 253:4    0    10G  0 dm   
+  ├─docker-8:1-2149998728-6c5c67b31f1a4e69b22369d4aa785e4c66eda8fa77ad9047f978a0f4c0ad2a83 253:5    0    10G  0 dm   
+  └─docker-8:1-2149998728-a6692d1bc01bcd22bd1b83e8b0c112730571a6aee61554c3fa83c3131372f3f4 253:6    0    10G  0 dm   
+[root@xsky-vmware-3 velen]# ceph -s
+    cluster c3c2ad59-3d33-4cd0-bdc0-b0d481e95ae7
+     health HEALTH_ERR
+            1024 pgs are stuck inactive for more than 300 seconds
+            1024 pgs stale
+            1024 pgs stuck stale
+            4/4 in osds are down
+            nobackfill,norecover,nodeep-scrub,sortbitwise,require_jewel_osds flag(s) set
+     monmap e1: 1 mons at {xsky-vmware-3=10.0.11.86:6789/0}
+            election epoch 3, quorum 0 xsky-vmware-3
+     osdmap e34: 4 osds: 0 up, 4 in
+            flags nobackfill,norecover,nodeep-scrub,sortbitwise,require_jewel_osds
+      pgmap v641: 1024 pgs, 1 pools, 80355 MB data, 23699 objects
+            60969 MB used, 3666 GB / 3725 GB avail
+                1024 stale+active+clean
+[root@xsky-vmware-3 velen]# systemctl status xmsd
+● xmsd.service - The distributed storage management engine
+   Loaded: loaded (/usr/lib/systemd/system/xmsd.service; enabled; vendor preset: disabled)
+   Active: inactive (dead) since 二 2019-05-07 17:11:03 CST; 1h 21min ago
+ Main PID: 2409 (code=killed, signal=TERM)
+
+5月 07 16:47:59 xsky-vmware-3 systemd[1]: Started The distributed storage management engine.
+5月 07 16:47:59 xsky-vmware-3 systemd[1]: Starting The distributed storage management engine...
+5月 07 17:11:03 xsky-vmware-3 systemd[1]: Stopping The distributed storage management engine...
+5月 07 17:11:03 xsky-vmware-3 systemd[1]: Stopped The distributed storage management engine.
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# systemctl status xmsd
+● xmsd.service - The distributed storage management engine
+   Loaded: loaded (/usr/lib/systemd/system/xmsd.service; enabled; vendor preset: disabled)
+   Active: inactive (dead) since 二 2019-05-07 17:11:03 CST; 1h 21min ago
+ Main PID: 2409 (code=killed, signal=TERM)
+
+5月 07 16:47:59 xsky-vmware-3 systemd[1]: Started The distributed storage management engine.
+5月 07 16:47:59 xsky-vmware-3 systemd[1]: Starting The distributed storage management engine...
+5月 07 17:11:03 xsky-vmware-3 systemd[1]: Stopping The distributed storage management engine...
+5月 07 17:11:03 xsky-vmware-3 systemd[1]: Stopped The distributed storage management engine.
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# shutdown -r 0
+Shutdown scheduled for 二 2019-05-07 18:36:21 CST, use 'shutdown -c' to cancel.
+[root@xsky-vmware-3 velen]# Connection to xsky-vmware-3 closed by remote host.
+Connection to xsky-vmware-3 closed.
+[root@xsky-vmware-1 ~]# ping xsky-vmware-3
+PING xsky-vmware-3 (10.0.11.86) 56(84) bytes of data.
+From xsky-vmware-1 (10.0.11.84) icmp_seq=26 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=27 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=28 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=29 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=30 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=31 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=32 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=33 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=34 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=35 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=36 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=37 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=38 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=39 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=40 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=41 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=42 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=43 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=44 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=45 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=46 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=47 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=48 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=49 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=50 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=51 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=52 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=53 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=54 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=55 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=56 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=57 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=58 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=59 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=60 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=61 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=62 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=63 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=64 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=65 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=66 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=67 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=68 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=69 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=70 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=71 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=72 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=73 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=74 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=75 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=76 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=77 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=78 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=79 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=80 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=81 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=82 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=83 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=84 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=85 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=86 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=87 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=88 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=89 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=90 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=91 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=92 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=93 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=94 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=95 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=96 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=97 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=98 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=99 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=100 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=101 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=102 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=103 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=104 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=105 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=106 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=107 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=108 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=109 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=110 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=111 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=112 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=113 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=114 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=115 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=116 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=117 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=118 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=119 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=120 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=121 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=122 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=123 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=124 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=125 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=126 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=127 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=128 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=129 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=130 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=131 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=132 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=133 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=134 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=135 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=136 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=137 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=138 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=139 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=140 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=141 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=142 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=143 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=144 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=145 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=146 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=147 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=148 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=149 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=150 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=151 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=152 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=153 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=154 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=155 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=156 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=157 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=158 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=159 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=160 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=161 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=162 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=163 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=164 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=165 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=166 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=167 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=168 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=169 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=170 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=171 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=172 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=173 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=174 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=175 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=176 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=177 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=178 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=179 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=180 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=181 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=182 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=183 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=184 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=185 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=186 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=187 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=188 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=189 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=190 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=191 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=192 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=193 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=194 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=195 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=196 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=197 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=198 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=199 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=200 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=201 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=202 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=203 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=204 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=205 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=206 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=207 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=208 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=209 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=210 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=211 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=212 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=213 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=214 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=215 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=216 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=217 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=218 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=219 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=220 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=221 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=222 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=223 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=224 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=225 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=226 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=227 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=228 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=229 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=230 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=231 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=232 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=233 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=234 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=235 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=236 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=237 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=238 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=239 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=240 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=241 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=242 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=243 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=244 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=245 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=246 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=247 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=248 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=249 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=250 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=251 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=252 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=253 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=254 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=255 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=256 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=257 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=258 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=259 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=260 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=261 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=262 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=263 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=264 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=265 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=266 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=267 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=268 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=269 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=270 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=271 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=272 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=273 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=274 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=275 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=276 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=277 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=278 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=279 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=280 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=281 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=282 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=283 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=284 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=285 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=286 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=287 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=288 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=289 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=290 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=291 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=292 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=293 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=294 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=295 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=296 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=297 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=298 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=299 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=300 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=301 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=302 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=303 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=304 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=305 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=306 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=307 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=308 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=309 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=310 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=311 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=312 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=313 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=314 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=315 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=316 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=317 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=318 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=319 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=320 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=321 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=322 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=323 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=324 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=325 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=326 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=327 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=328 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=329 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=330 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=331 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=332 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=333 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=334 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=335 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=336 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=337 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=338 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=339 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=340 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=341 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=342 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=343 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=344 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=345 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=346 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=347 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=348 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=349 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=350 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=351 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=352 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=353 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=354 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=355 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=356 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=357 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=358 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=359 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=360 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=361 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=362 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=363 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=364 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=365 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=366 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=367 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=368 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=369 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=370 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=371 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=372 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=373 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=374 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=375 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=376 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=377 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=378 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=379 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=380 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=381 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=382 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=383 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=384 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=385 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=386 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=387 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=388 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=389 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=390 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=391 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=392 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=393 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=394 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=395 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=396 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=397 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=398 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=399 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=400 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=401 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=402 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=403 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=404 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=405 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=406 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=407 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=408 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=409 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=410 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=411 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=412 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=413 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=414 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=415 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=416 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=417 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=418 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=419 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=420 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=421 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=422 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=423 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=424 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=425 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=426 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=427 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=428 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=429 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=430 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=431 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=432 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=433 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=434 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=435 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=436 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=437 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=438 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=439 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=440 Destination Host Unreachable
+From xsky-vmware-1 (10.0.11.84) icmp_seq=441 Destination Host Unreachable
+
+Connection closed by foreign host.
+
+Disconnected from remote host(10.0.11.84:22) at 18:44:06.
+
+Type `help' to learn how to use Xshell prompt.
+[c:\~]$ 
+
+Connecting to 10.0.11.84:22...
+Connection established.
+To escape to local shell, press 'Ctrl+Alt+]'.
+
+Last login: Wed May  8 03:02:07 2019 from 10.255.0.10
+[root@xsky-vmware-1 ~]# ssh xsky-vmware-3
+Last login: Wed May  8 03:02:10 2019 from 10.255.0.10
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# ceph -s
+    cluster c3c2ad59-3d33-4cd0-bdc0-b0d481e95ae7
+     health HEALTH_WARN
+            nobackfill,norecover,nodeep-scrub,sortbitwise,require_jewel_osds flag(s) set
+     monmap e1: 1 mons at {xsky-vmware-3=10.0.11.86:6789/0}
+            election epoch 4, quorum 0 xsky-vmware-3
+     osdmap e38: 4 osds: 4 up, 4 in
+            flags nobackfill,norecover,nodeep-scrub,sortbitwise,require_jewel_osds
+      pgmap v944: 1024 pgs, 1 pools, 80423 MB data, 23714 objects
+            61108 MB used, 3665 GB / 3725 GB avail
+                1024 active+clean
+  client io 6675 B/s rd, 9 op/s rd, 0 op/s wr
+[root@xsky-vmware-3 ~]# ceph -s
+    cluster c3c2ad59-3d33-4cd0-bdc0-b0d481e95ae7
+     health HEALTH_OK
+     monmap e1: 1 mons at {xsky-vmware-3=10.0.11.86:6789/0}
+            election epoch 4, quorum 0 xsky-vmware-3
+     osdmap e40: 4 osds: 4 up, 4 in
+            flags nodeep-scrub,sortbitwise,require_jewel_osds
+      pgmap v951: 1024 pgs, 1 pools, 80423 MB data, 23714 objects
+            61124 MB used, 3665 GB / 3725 GB avail
+                1024 active+clean
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# ceph -s
+    cluster c3c2ad59-3d33-4cd0-bdc0-b0d481e95ae7
+     health HEALTH_OK
+     monmap e1: 1 mons at {xsky-vmware-3=10.0.11.86:6789/0}
+            election epoch 4, quorum 0 xsky-vmware-3
+     osdmap e40: 4 osds: 4 up, 4 in
+            flags nodeep-scrub,sortbitwise,require_jewel_osds
+      pgmap v951: 1024 pgs, 1 pools, 80423 MB data, 23714 objects
+            61124 MB used, 3665 GB / 3725 GB avail
+                1024 active+clean
+[root@xsky-vmware-3 ~]# lsblk
+NAME                                                                                       MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda                                                                                          8:0    0 931.5G  0 disk 
+└─sda1                                                                                       8:1    0 931.5G  0 part /
+sdb                                                                                          8:16   0 931.5G  0 disk 
+├─sdb1                                                                                       8:17   0   100M  0 part /var/lib/ceph/osd/ceph-3
+└─sdb2                                                                                       8:18   0 931.4G  0 part 
+sdc                                                                                          8:32   0 931.5G  0 disk 
+├─sdc1                                                                                       8:33   0   100M  0 part /var/lib/ceph/osd/ceph-2
+└─sdc2                                                                                       8:34   0 931.4G  0 part 
+sdd                                                                                          8:48   0 931.5G  0 disk 
+├─sdd1                                                                                       8:49   0   100M  0 part /var/lib/ceph/osd/ceph-0
+└─sdd2                                                                                       8:50   0 931.4G  0 part 
+sde                                                                                          8:64   0 931.5G  0 disk 
+├─sde1                                                                                       8:65   0   100M  0 part /var/lib/ceph/osd/ceph-1
+└─sde2                                                                                       8:66   0 931.4G  0 part 
+sdf                                                                                          8:80   0 372.6G  0 disk 
+├─sdf1                                                                                       8:81   0    42G  0 part 
+├─sdf2                                                                                       8:82   0  82.7G  0 part 
+├─sdf3                                                                                       8:83   0  82.7G  0 part 
+├─sdf4                                                                                       8:84   0  82.7G  0 part 
+└─sdf5                                                                                       8:85   0  82.7G  0 part 
+sdg                                                                                          8:96   0 372.6G  0 disk 
+├─sdg1                                                                                       8:97   0    42G  0 part /var/lib/ceph/omap/4
+├─sdg2                                                                                       8:98   0  82.7G  0 part 
+├─sdg3                                                                                       8:99   0  82.7G  0 part 
+├─sdg4                                                                                       8:100  0  82.7G  0 part 
+└─sdg5                                                                                       8:101  0  82.7G  0 part 
+loop0                                                                                        7:0    0   100G  0 loop 
+└─docker-8:1-2149998728-pool                                                               253:0    0   100G  0 dm   
+  ├─docker-8:1-2149998728-b03cac468a532bfed8609e86eaec7795cd2618313f1e2da24c9a7bffc8005c0d 253:1    0    10G  0 dm   
+  ├─docker-8:1-2149998728-386f52b58e478ba887bb1fe44c4e509bf4e0232f13ea4f1719927aeffa2432bd 253:2    0    10G  0 dm   
+  ├─docker-8:1-2149998728-a6692d1bc01bcd22bd1b83e8b0c112730571a6aee61554c3fa83c3131372f3f4 253:3    0    10G  0 dm   
+  ├─docker-8:1-2149998728-3b2ce478f35a36085d2c82eb376743a5bd28a150edbf922a9236376a3bb83d31 253:4    0    10G  0 dm   
+  └─docker-8:1-2149998728-6c5c67b31f1a4e69b22369d4aa785e4c66eda8fa77ad9047f978a0f4c0ad2a83 253:5    0    10G  0 dm   
+loop1                                                                                        7:1    0     2G  0 loop 
+└─docker-8:1-2149998728-pool                                                               253:0    0   100G  0 dm   
+  ├─docker-8:1-2149998728-b03cac468a532bfed8609e86eaec7795cd2618313f1e2da24c9a7bffc8005c0d 253:1    0    10G  0 dm   
+  ├─docker-8:1-2149998728-386f52b58e478ba887bb1fe44c4e509bf4e0232f13ea4f1719927aeffa2432bd 253:2    0    10G  0 dm   
+  ├─docker-8:1-2149998728-a6692d1bc01bcd22bd1b83e8b0c112730571a6aee61554c3fa83c3131372f3f4 253:3    0    10G  0 dm   
+  ├─docker-8:1-2149998728-3b2ce478f35a36085d2c82eb376743a5bd28a150edbf922a9236376a3bb83d31 253:4    0    10G  0 dm   
+  └─docker-8:1-2149998728-6c5c67b31f1a4e69b22369d4aa785e4c66eda8fa77ad9047f978a0f4c0ad2a83 253:5    0    10G  0 dm   
+[root@xsky-vmware-3 ~]# ceph-disk zap /dev/sdf
+sdf   sdf1  sdf2  sdf3  sdf4  sdf5  
+[root@xsky-vmware-3 ~]# ceph-disk zap /dev/sdf
+Caution: invalid backup GPT header, but valid main header; regenerating
+backup header from main header.
+
+Warning! Main and backup partition tables differ! Use the 'c' and 'e' options
+on the recovery & transformation menu to examine the two tables.
+
+Warning! One or more CRCs don't match. You should repair the disk!
+
+****************************************************************************
+Caution: Found protective or hybrid MBR and corrupt GPT. Using GPT, but disk
+verification and recovery are STRONGLY recommended.
+****************************************************************************
+Warning: The kernel is still using the old partition table.
+The new table will be used at the next reboot.
+GPT data structures destroyed! You may now partition the disk using fdisk or
+other utilities.
+Creating new GPT entries.
+Warning: The kernel is still using the old partition table.
+The new table will be used at the next reboot.
+The operation has completed successfully.
+ceph-disk: Error: partprobe /dev/sdf failed : Error: Partition(s) 3, 5 on /dev/sdf have been written, but we have been unable to inform the kernel of the change, probably because it/they are in use.  As a result, the old partition(s) will remain in use.  You should reboot now before making further changes.
+
+[root@xsky-vmware-3 ~]# lsblk
+NAME                                                                                       MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda                                                                                          8:0    0 931.5G  0 disk 
+└─sda1                                                                                       8:1    0 931.5G  0 part /
+sdb                                                                                          8:16   0 931.5G  0 disk 
+├─sdb1                                                                                       8:17   0   100M  0 part /var/lib/ceph/osd/ceph-3
+└─sdb2                                                                                       8:18   0 931.4G  0 part 
+sdc                                                                                          8:32   0 931.5G  0 disk 
+├─sdc1                                                                                       8:33   0   100M  0 part /var/lib/ceph/osd/ceph-2
+└─sdc2                                                                                       8:34   0 931.4G  0 part 
+sdd                                                                                          8:48   0 931.5G  0 disk 
+├─sdd1                                                                                       8:49   0   100M  0 part /var/lib/ceph/osd/ceph-0
+└─sdd2                                                                                       8:50   0 931.4G  0 part 
+sde                                                                                          8:64   0 931.5G  0 disk 
+├─sde1                                                                                       8:65   0   100M  0 part /var/lib/ceph/osd/ceph-1
+└─sde2                                                                                       8:66   0 931.4G  0 part 
+sdf                                                                                          8:80   0 372.6G  0 disk 
+├─sdf3                                                                                       8:83   0  82.7G  0 part 
+└─sdf5                                                                                       8:85   0  82.7G  0 part 
+sdg                                                                                          8:96   0 372.6G  0 disk 
+├─sdg1                                                                                       8:97   0    42G  0 part /var/lib/ceph/omap/4
+├─sdg2                                                                                       8:98   0  82.7G  0 part 
+├─sdg3                                                                                       8:99   0  82.7G  0 part 
+├─sdg4                                                                                       8:100  0  82.7G  0 part 
+└─sdg5                                                                                       8:101  0  82.7G  0 part 
+loop0                                                                                        7:0    0   100G  0 loop 
+└─docker-8:1-2149998728-pool                                                               253:0    0   100G  0 dm   
+  ├─docker-8:1-2149998728-b03cac468a532bfed8609e86eaec7795cd2618313f1e2da24c9a7bffc8005c0d 253:1    0    10G  0 dm   
+  ├─docker-8:1-2149998728-386f52b58e478ba887bb1fe44c4e509bf4e0232f13ea4f1719927aeffa2432bd 253:2    0    10G  0 dm   
+  ├─docker-8:1-2149998728-a6692d1bc01bcd22bd1b83e8b0c112730571a6aee61554c3fa83c3131372f3f4 253:3    0    10G  0 dm   
+  ├─docker-8:1-2149998728-3b2ce478f35a36085d2c82eb376743a5bd28a150edbf922a9236376a3bb83d31 253:4    0    10G  0 dm   
+  └─docker-8:1-2149998728-6c5c67b31f1a4e69b22369d4aa785e4c66eda8fa77ad9047f978a0f4c0ad2a83 253:5    0    10G  0 dm   
+loop1                                                                                        7:1    0     2G  0 loop 
+└─docker-8:1-2149998728-pool                                                               253:0    0   100G  0 dm   
+  ├─docker-8:1-2149998728-b03cac468a532bfed8609e86eaec7795cd2618313f1e2da24c9a7bffc8005c0d 253:1    0    10G  0 dm   
+  ├─docker-8:1-2149998728-386f52b58e478ba887bb1fe44c4e509bf4e0232f13ea4f1719927aeffa2432bd 253:2    0    10G  0 dm   
+  ├─docker-8:1-2149998728-a6692d1bc01bcd22bd1b83e8b0c112730571a6aee61554c3fa83c3131372f3f4 253:3    0    10G  0 dm   
+  ├─docker-8:1-2149998728-3b2ce478f35a36085d2c82eb376743a5bd28a150edbf922a9236376a3bb83d31 253:4    0    10G  0 dm   
+  └─docker-8:1-2149998728-6c5c67b31f1a4e69b22369d4aa785e4c66eda8fa77ad9047f978a0f4c0ad2a83 253:5    0    10G  0 dm   
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# ^C
+[root@xsky-vmware-3 ~]# 登出
+Connection to xsky-vmware-3 closed.
+[root@xsky-vmware-1 ~]# 
+[root@xsky-vmware-1 ~]# 
+[root@xsky-vmware-1 ~]# ceph -s
+  cluster:
+    id:     d9316774-1972-419b-9a6c-d5fed5084049
+    health: HEALTH_OK
+ 
+  services:
+    mon: 2 daemons, quorum xsky-vmware-1,xsky-vmware-2
+    osd: 8 osds: 8 up, 8 in
+ 
+  data:
+    pools:   1 pools, 1024 pgs
+    objects: 153k objects, 611G
+    usage:   1268G used, 6182G / 7451G avail
+    pgs:     1024 active+clean
+ 
+  io:
+    client:   1866 kB/s rd, 0 B/s wr, 98 op/s rd, 0 op/s wr
+ 
+[root@xsky-vmware-1 ~]# 
+[root@xsky-vmware-1 ~]# 
+[root@xsky-vmware-1 ~]# 
+[root@xsky-vmware-1 ~]# 
+[root@xsky-vmware-1 ~]# ssh xsky-vmware-3
+Last login: Wed May  8 12:02:13 2019 from 10.255.0.10
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# ceph -s
+    cluster c3c2ad59-3d33-4cd0-bdc0-b0d481e95ae7
+     health HEALTH_OK
+     monmap e1: 1 mons at {xsky-vmware-3=10.0.11.86:6789/0}
+            election epoch 4, quorum 0 xsky-vmware-3
+     osdmap e40: 4 osds: 4 up, 4 in
+            flags nodeep-scrub,sortbitwise,require_jewel_osds
+      pgmap v960: 1024 pgs, 1 pools, 80423 MB data, 23714 objects
+            61124 MB used, 3665 GB / 3725 GB avail
+                1024 active+clean
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# ceph -s
+    cluster c3c2ad59-3d33-4cd0-bdc0-b0d481e95ae7
+     health HEALTH_OK
+     monmap e1: 1 mons at {xsky-vmware-3=10.0.11.86:6789/0}
+            election epoch 4, quorum 0 xsky-vmware-3
+     osdmap e40: 4 osds: 4 up, 4 in
+            flags nodeep-scrub,sortbitwise,require_jewel_osds
+      pgmap v960: 1024 pgs, 1 pools, 80423 MB data, 23714 objects
+            61124 MB used, 3665 GB / 3725 GB avail
+                1024 active+clean
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# 
+[root@xsky-vmware-3 ~]# cd velen/
+[root@xsky-vmware-3 velen]# ls 
+README.md  sds-show-version  sds-tools  sds_tools.py  site-packages.zip  sync.sh  velen
+[root@xsky-vmware-3 velen]# 
+[root@xsky-vmware-3 velen]# ./sds-tools report-pool-usage --pool 
+usage: sds-tools report-pool-usage [options]
+sds-tools report-pool-usage: error: argument --pool: expected one argument
+[root@xsky-vmware-3 velen]# ceph osd pool ls 
+pool-2e1381060c6f4ad38312351bbe38afc3
+[root@xsky-vmware-3 velen]# ./sds-tools report-pool-usage --pool pool-2e1381060c6f4ad38312351bbe38afc3
+2019-05-08T12:37:00 - tools.report_pool_usage - INFO - report-pool-usage is called
+etcd client v3
+10.0.11.86
+
+etcd client v3
+10.0.11.86
+
+{"paging":{"count":1,"limit":100,"offset":0,"total_count":1},"pools":[{"action_status":"active","block_volume_num":10,"cache_pool":null,"coding_chunk_num":0,"create":"2019-05-07T08:56:55.271854Z","data_chunk_num":0,"device_type":"Hybrid","failure_domain_type":"host","id":1,"name":"xsky-test","osd_num":4,"osds":null,"pool_id":1,"pool_mode":"active","pool_name":"pool-2e1381060c6f4ad38312351bbe38afc3","pool_role":"block","pool_type":"replicated","primary_placement_node":null,"property":{"osd_full_ratio":0.9,"scrub_begin":"00:00","scrub_end":"00:00"},"protection_domain":{"create":"2019-05-07T08:48:02.766222Z","description":"The first protection domain","id":1,"name":"default","placement_node":{"create":"2019-05-07T08:48:02.764243Z","id":1,"name":"default","parent":null,"type":"root","update":"2019-05-07T08:48:02.764245Z"},"status":"active","update":"2019-05-07T08:48:02.766225Z"},"qos":{"bandwidth":10485760,"bandwidth_max":0,"client_threshold":0,"id":1,"mode":1},"replicate_size":1,"samples":[{"actual_kbyte":3906640736,"create":"2019-05-08T12:36:59+08:00","creating_num":0,"data_kbyte":62590976,"degraded_num":0,"degraded_percent":0,"error_kbyte":0,"healthy_num":1024,"healthy_percent":1,"id":0,"read_bandwidth_kbyte":0,"read_iops":0,"read_latency_us":0,"recovery_bandwidth_kbyte":0,"recovery_iops":0,"recovery_num":0,"recovery_percent":0,"total_bandwidth_kbyte":0,"total_iops":0,"total_kbyte":3907050336,"unavailable_num":0,"unavailable_percent":0,"used_kbyte":63015776,"write_bandwidth_kbyte":0,"write_iops":0,"write_latency_us":0}],"status":"active","tier_status":"","update":"2019-05-07T08:56:55.271857Z"}]}
+etcd client v3
+Traceback (most recent call last):
+  File "sds_tools.py", line 12, in <module>
+    velen.main.main()
+  File "/root/velen/velen/main.py", line 38, in main
+    args.func(args)
+  File "/root/velen/velen/sds/version.py", line 68, in wrapped
+    return f(*args, **kwargs)
+  File "/root/velen/velen/tools/report_pool_usage.py", line 26, in run
+    print(db.simple_sql('select now(); select id, name from osd order by id desc;'))
+AttributeError: 'Database' object has no attribute 'simple_sql'
+[root@xsky-vmware-3 velen]#
