@@ -27,17 +27,20 @@ done
 
 rm -f ./vdbench_test-file
 get_resource scp
-for i in single_vol nude_vol mix_vol
+for vdfiles in single_vol nude_vol mix_vol
 do
-ls $i|sort -n -k 1 >> ./vdbench_test-file
-done
-
-for i in $(cat ${PATH}/vdbench_test-file)
+ls ${vdfiles}|sort -n -k 1 >> ./${vdfiles}/vdbench_test-file
+for vdconfs in $(cat ${vdfiles}/vdbench_test-file|grep -v vdbench_test-file)
 do
-get_resource start $i
-/root/vdbench50407/vdbench -f ${PATH}/${i}
+get_resource start ${vdconfs}
+/root/vdbench50407/vdbench -f ./${vdfiles}/${vdconfs}
 sleep 1
 get_resource stop
 sleep 1
-tar -zcvf ${dir}/${i}.tar.gz /root/vdbench50407/output/
+if [ ! -d /media/${vdfiles} ] #判断存放vd结果目录是否存在，‘media’为本例中存放目录
+then
+mkdir -p /media/${vdfiles} #vdfiles对应为single_vol nude_vol mix_vol三个目录，第一次时创建
+fi
+cp /root/vdbench50407/output/ /media/${vdfiles}/${vdconfs}.log #将结果cp到对应上面创建的三个目录下，并命名为vd文件名.log
+done
 done
