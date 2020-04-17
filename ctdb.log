@@ -1,0 +1,388 @@
+单节点启动日志：
+2018/05/28 11:50:30.404607 ctdbd[2309]: CTDB starting on node    # 启动打印
+2018/05/28 11:50:30.409351 ctdbd[2310]: Starting CTDBD (Version 4.7.0rc3) as PID: 2310
+2018/05/28 11:50:30.409613 ctdbd[2310]: Created PID file /run/ctdb/ctdbd.pid
+2018/05/28 11:50:30.409711 ctdbd[2310]: Removed stale socket /var/run/ctdb/ctdbd.socket
+2018/05/28 11:50:30.409830 ctdbd[2310]: Listening to ctdb socket /var/run/ctdb/ctdbd.socket
+2018/05/28 11:50:30.410353 ctdbd[2310]: Starting event daemon /usr/libexec/ctdb/ctdb_eventd -e /etc/ctdb/events.d -s /var/run/ctdb/eventd.sock -P 2310 -l file:/var/log/ctdb/ctdb.log -d NOTICE
+2018/05/28 11:50:30.411017 ctdbd[2310]: connect() failed, errno=2
+2018/05/28 11:50:30.417778 ctdb-eventd[2311]: listening on /var/run/ctdb/eventd.sock
+2018/05/28 11:50:30.418058 ctdb-eventd[2311]: daemon started, pid=2311
+2018/05/28 11:50:31.412305 ctdbd[2310]: Set runstate to INIT (1)    # INIT脚本
+2018/05/28 11:50:32.967107 ctdb-eventd[2311]: 10.interface: lrwxrwxrwx 1 root root  9 May 28 11:35 wwn-0x60058530155e9a84bd11acb600000000 -> ../../sde
+2018/05/28 11:50:32.967225 ctdb-eventd[2311]: 10.interface: lrwxrwxrwx 1 root root  9 May 28 11:35 wwn-0x600585301606400b07b3631f00000000 -> ../../sdc
+2018/05/28 11:50:32.967392 ctdb-eventd[2311]: 10.interface: lrwxrwxrwx 1 root root  9 May 28 11:35 wwn-0x6005853012c46b7374d9067c00000000 -> ../../sdd
+2018/05/28 11:50:33.079323 ctdbd[2310]: PNN is 0    # 初始化vnnmap
+2018/05/28 11:50:33.085523 ctdbd[2310]: Ignoring persistent database 'ctdb.tdb.2'
+2018/05/28 11:50:33.094850 ctdbd[2310]: Vacuuming is disabled for non-volatile database ctdb.tdb
+2018/05/28 11:50:33.094973 ctdbd[2310]: Attached to database '/var/lib/ctdb/persistent/ctdb.tdb.0' with flags 0x400
+2018/05/28 11:50:33.095037 ctdbd[2310]: Freeze db: ctdb.tdb
+2018/05/28 11:50:33.095129 ctdbd[2310]: Set lock helper to "/usr/libexec/ctdb/ctdb_lock_helper"
+2018/05/28 11:50:33.114172 ctdbd[2310]: Set runstate to SETUP (2)
+2018/05/28 11:50:33.215613 ctdb-eventd[2311]: 00.ctdb: Set ControlTimeout to 1000000    # 设置调优参数
+2018/05/28 11:50:33.215707 ctdb-eventd[2311]: 00.ctdb: Set EventScriptTimeout to 1000000
+2018/05/28 11:50:33.215733 ctdb-eventd[2311]: 00.ctdb: Set KeepaliveInterval to 2
+2018/05/28 11:50:33.215750 ctdb-eventd[2311]: 00.ctdb: Set KeepaliveLimit to 3
+2018/05/28 11:50:33.215765 ctdb-eventd[2311]: 00.ctdb: Set MonitorInterval to 6
+2018/05/28 11:50:33.215780 ctdb-eventd[2311]: 00.ctdb: Set NoIPHostOnAllDisabled to 1
+2018/05/28 11:50:33.215794 ctdb-eventd[2311]: 00.ctdb: Set RerecoveryTimeout to 5
+2018/05/28 11:50:33.215810 ctdb-eventd[2311]: 00.ctdb: Set TakeoverTimeout to 1000000
+2018/05/28 11:50:33.363534 ctdbd[2310]: Keepalive monitoring has been started
+2018/05/28 11:50:33.363656 ctdbd[2310]: Set runstate to FIRST_RECOVERY (3)    # 开始RECOVERY
+2018/05/28 11:50:33.364156 ctdb-recoverd[2465]: monitor_cluster starting    # recoverd loop开始
+2018/05/28 11:50:33.365930 ctdb-recoverd[2465]: disconnected nodes reached half, there may be network partion, checking recovery lock!
+2018/05/28 11:50:33.845881 ctdbd[2310]: /usr/libexec/ctdb/ctdb_mutex_ceph_rados_helper: ping ceph cluster ok    # is_network_partion检查
+2018/05/28 11:50:33.846110 ctdb-recoverd[2465]: Initial recovery master set - forcing election    # 没有recmaster，选主
+2018/05/28 11:50:33.846312 ctdbd[2310]: This node (0) is now the recovery master    # 选主成功
+2018/05/28 11:50:34.364489 ctdbd[2310]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 11:50:35.364746 ctdbd[2310]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 11:50:36.365309 ctdbd[2310]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 11:50:36.847513 ctdb-recoverd[2465]: Election period ended
+2018/05/28 11:50:36.848329 ctdb-recoverd[2465]: Node:0 was in recovery mode. Start recovery process    # 恢复database
+2018/05/28 11:50:36.848380 ctdb-recoverd[2465]: ../ctdb/server/ctdb_recoverd.c:1371 Starting do_recovery
+2018/05/28 11:50:36.848405 ctdb-recoverd[2465]: Attempting to take recovery lock (!/usr/libexec/ctdb/ctdb_mutex_ceph_rados_helper ceph client.admin pool-95f2cd95ce6d4318b65647f991a5e967 ctdb.7.reclock)
+2018/05/28 11:50:36.976340 ctdb-recoverd[2465]: Recovery lock taken successfully by recovery daemon
+2018/05/28 11:50:36.976467 ctdb-recoverd[2465]: ../ctdb/server/ctdb_recoverd.c:1430 Recovery initiated due to problem with node 0
+2018/05/28 11:50:36.977210 ctdb-recoverd[2465]: ../ctdb/server/ctdb_recoverd.c:1455 Recovery - created remote databases
+2018/05/28 11:50:36.978607 ctdb-recoverd[2465]: ../ctdb/server/ctdb_recoverd.c:1484 Recovery - updated flags
+2018/05/28 11:50:36.978756 ctdb-recoverd[2465]: Set recovery_helper to "/usr/libexec/ctdb/ctdb_recovery_helper"
+2018/05/28 11:50:37.014259 ctdb-recovery[2497]: Set recovery mode to ACTIVE
+2018/05/28 11:50:37.014598 ctdbd[2310]: Recovery has started
+2018/05/28 11:50:37.247282 ctdb-recovery[2497]: start_recovery event finished
+2018/05/28 11:50:37.247512 ctdb-recovery[2497]: updated VNNMAP
+2018/05/28 11:50:37.247585 ctdb-recovery[2497]: recover database 0x6645c6c4
+2018/05/28 11:50:37.248452 ctdbd[2310]: Freeze db: ctdb.tdb frozen
+2018/05/28 11:50:37.328831 ctdbd[2310]: Thaw db: ctdb.tdb generation 1321469368
+2018/05/28 11:50:37.328931 ctdbd[2310]: Release freeze handle for db ctdb.tdb
+2018/05/28 11:50:37.329613 ctdb-recovery[2497]: 1 of 1 databases recovered
+2018/05/28 11:50:37.329965 ctdbd[2310]: Recovery mode set to NORMAL
+2018/05/28 11:50:37.366398 ctdbd[2310]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 11:50:37.366494 ctdbd[2310]: ../ctdb/server/ctdb_monitor.c:323 in recovery. Wait one more second
+2018/05/28 11:50:37.505654 ctdbd[2310]: /usr/libexec/ctdb/ctdb_mutex_ceph_rados_helper: get lock contention 'ctdb.7.reclock' - (Device or resource busy)
+2018/05/28 11:50:37.505913 ctdb-recovery[2497]: Set recovery mode to NORMAL
+2018/05/28 11:50:37.506044 ctdbd[2310]: Recovery has finished
+2018/05/28 11:50:37.697501 ctdbd[2310]: Set runstate to STARTUP (4)
+2018/05/28 11:50:37.697723 ctdb-recovery[2497]: recovered event finished
+2018/05/28 11:50:37.698109 ctdb-recoverd[2465]: Takeover run starting    # 开始takeover
+2018/05/28 11:50:37.698219 ctdb-recoverd[2465]: Set takeover_helper to "/usr/libexec/ctdb/ctdb_takeover_helper"
+2018/05/28 11:50:37.707474 ctdb-takeover[2550]: No nodes available to host public IPs yet    # 检查ip归属
+2018/05/28 11:50:37.902604 ctdb-recoverd[2465]: Takeover run completed successfully
+2018/05/28 11:50:37.902699 ctdb-recoverd[2465]: ../ctdb/server/ctdb_recoverd.c:1502 Recovery complete
+2018/05/28 11:50:37.902729 ctdb-recoverd[2465]: Resetting ban count to 0 for all nodes
+2018/05/28 11:50:37.902753 ctdb-recoverd[2465]: Just finished a recovery. New recoveries will now be suppressed for the rerecovery timeout (5 seconds)
+2018/05/28 11:50:37.902774 ctdb-recoverd[2465]: Disabling recoveries for 5 seconds    # 调优RerecoveryTimeout=5
+2018/05/28 11:50:37.904623 ctdb-recoverd[2465]: Initial interface fetched
+2018/05/28 11:50:37.905009 ctdb-recoverd[2465]: Trigger takeoverrun
+2018/05/28 11:50:37.905520 ctdb-recoverd[2465]: Takeover run starting
+2018/05/28 11:50:37.914959 ctdb-takeover[2569]: No nodes available to host public IPs yet
+2018/05/28 11:50:38.099670 ctdb-recoverd[2465]: Takeover run completed successfully
+2018/05/28 11:50:38.367719 ctdbd[2310]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 11:50:38.367813 ctdbd[2310]: ../ctdb/server/ctdb_monitor.c:334 wait for pending recoveries to end. Wait one more second.
+2018/05/28 11:50:39.368335 ctdbd[2310]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 11:50:39.368424 ctdbd[2310]: ../ctdb/server/ctdb_monitor.c:334 wait for pending recoveries to end. Wait one more second.
+2018/05/28 11:50:40.369307 ctdbd[2310]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 11:50:40.369424 ctdbd[2310]: ../ctdb/server/ctdb_monitor.c:334 wait for pending recoveries to end. Wait one more second.
+2018/05/28 11:50:41.369687 ctdbd[2310]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 11:50:41.369802 ctdbd[2310]: ../ctdb/server/ctdb_monitor.c:334 wait for pending recoveries to end. Wait one more second.
+2018/05/28 11:50:42.370317 ctdbd[2310]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 11:50:42.370433 ctdbd[2310]: ../ctdb/server/ctdb_monitor.c:334 wait for pending recoveries to end. Wait one more second.
+2018/05/28 11:50:42.903926 ctdb-recoverd[2465]: Reenabling recoveries after timeout
+2018/05/28 11:50:43.370632 ctdbd[2310]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 11:50:43.370720 ctdbd[2310]: ../ctdb/server/ctdb_monitor.c:334 wait for pending recoveries to end. Wait one more second.
+2018/05/28 11:50:44.371189 ctdbd[2310]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 11:50:44.371290 ctdbd[2310]: ../ctdb/server/ctdb_monitor.c:334 wait for pending recoveries to end. Wait one more second.
+2018/05/28 11:50:45.371645 ctdbd[2310]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 11:50:45.371796 ctdbd[2310]: ../ctdb/server/ctdb_monitor.c:334 wait for pending recoveries to end. Wait one more second.
+2018/05/28 11:50:46.373134 ctdbd[2310]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 11:50:46.373248 ctdbd[2310]: ctdb_recheck_persistent_health: OK[1] FAIL[0]
+2018/05/28 11:50:46.373278 ctdbd[2310]: ../ctdb/server/ctdb_takeover.c:1577 vnn->pnn: -1, ctdb->pnn: 0, interface: __none__
+2018/05/28 11:50:46.373343 ctdbd[2310]: ../ctdb/server/ctdb_takeover.c:1586 Force releasing IP 10.255.101.243/24 on interface __none__ on this node
+2018/05/28 11:50:47.252527 ctdb-eventd[2311]: 10.interface: ---releaseip block in---    # 要takeip，先releaseip （包含卸载）
+2018/05/28 11:50:47.252657 ctdb-eventd[2311]: 10.interface: Cannot get device settings: No such device
+2018/05/28 11:50:47.252697 ctdb-eventd[2311]: 10.interface: Cannot get wake-on-lan settings: No such device
+2018/05/28 11:50:47.252724 ctdb-eventd[2311]: 10.interface: Cannot get message level: No such device
+2018/05/28 11:50:47.252751 ctdb-eventd[2311]: 10.interface: Cannot get link status: No such device
+2018/05/28 11:50:47.252774 ctdb-eventd[2311]: 10.interface: __none__ state is down, can not add ip to it
+2018/05/28 11:50:47.252797 ctdb-eventd[2311]: 10.interface: WARNING: Unable to determine interface for IP 10.255.101.243
+2018/05/28 11:50:47.252820 ctdb-eventd[2311]: 10.interface: __none__ down & vip NOT exist, do umount
+2018/05/28 11:50:47.552066 ctdbd[2310]: ../ctdb/server/ctdb_takeover.c:1633 Released 0 public IPs
+2018/05/28 11:50:47.552204 ctdbd[2310]: Running the "startup" event.
+2018/05/28 11:50:48.085277 ctdbd[2310]: startup event OK - enabling monitoring
+2018/05/28 11:50:48.085340 ctdbd[2310]: Set runstate to RUNNING (5)
+2018/05/28 11:50:50.243545 ctdbd[2310]: monitor event OK - node re-enabled
+2018/05/28 11:50:50.243604 ctdbd[2310]: Node became HEALTHY. Ask recovery master to reallocate IPs    # 节点健康的打印
+2018/05/28 11:50:50.243757 ctdb-recoverd[2465]: Node 0 has changed flags - now 0x0  was 0x2
+2018/05/28 11:50:50.929494 ctdb-recoverd[2465]: Unassigned IP 10.255.101.243 can be served by this node
+2018/05/28 11:50:50.929607 ctdb-recoverd[2465]: Trigger takeoverrun
+2018/05/28 11:50:50.929708 ctdb-recoverd[2465]: Takeover run starting
+2018/05/28 11:50:50.934767 ctdbd[2310]: Takeover of IP 10.255.101.243/24 on interface ens160
+2018/05/28 11:50:55.245451 ctdbd[2310]: Monitoring event was cancelled
+2018/05/28 11:50:57.575892 ctdb-eventd[2311]: 10.interface: ---takeip block in---    # takeip (包含挂载)
+2018/05/28 11:50:57.575972 ctdb-eventd[2311]: 10.interface: PING 10.255.101.243 (10.255.101.243) 56(84) bytes of data.
+2018/05/28 11:50:57.575993 ctdb-eventd[2311]: 10.interface: --- 10.255.101.243 ping statistics ---
+2018/05/28 11:50:57.576008 ctdb-eventd[2311]: 10.interface: 3 packets transmitted, 0 received, 100% packet loss, time 2000ms
+2018/05/28 11:50:57.576029 ctdb-eventd[2311]: 10.interface: lrwxrwxrwx 1 root root  9 May 28 11:50 wwn-0x6005853012c46b7374d9067c00000000 -> ../../sdd
+2018/05/28 11:50:57.576047 ctdb-eventd[2311]: 10.interface: lrwxrwxrwx 1 root root  9 May 28 11:50 wwn-0x600585301606400b07b3631f00000000 -> ../../sde
+2018/05/28 11:50:57.576065 ctdb-eventd[2311]: 10.interface: lrwxrwxrwx 1 root root  9 May 28 11:50 wwn-0x60058530155e9a84bd11acb600000000 -> ../../sdc
+2018/05/28 11:50:57.576115 ctdb-eventd[2311]: 10.interface: tmpfs on /opt/sds/smb/smb_tmpfs type tmpfs (rw,relatime)
+2018/05/28 11:50:57.949283 ctdb-eventd[2311]: 60.nfs: Reconfiguring service "nfs"...    # 拉起服务
+2018/05/28 11:50:57.963808 ctdb-recoverd[2465]: Takeover run completed successfully
+2018/05/28 11:51:00.140058 ctdbd[2310]: Starting traverse on DB ctdb.tdb (id 426)
+2018/05/28 11:51:00.142422 ctdbd[2310]: Ending traverse on DB ctdb.tdb (id 426), records 0
+2018/05/28 11:51:09.429162 ctdb-eventd[2311]: 60.nfs: WARNING: rquotad failed RPC check:
+2018/05/28 11:51:09.429242 ctdb-eventd[2311]: 60.nfs: rpcinfo: RPC: Program not registered
+2018/05/28 11:51:09.429263 ctdb-eventd[2311]: 60.nfs: Trying to restart service "rquotad"...
+ 
+
+多节点联动
+多节点和单节点主要区别就在于ctdb_recoverd里main_loop中的处理，当检查“pnn != rec->recmaster“后，非recmaster的节点就直接返回了，整个recovery流程仅跑在recmaster上。
+
+多节点启动日志
+2018/05/28 12:23:25.188127 ctdbd[8164]: CTDB starting on node    # 开始打印
+2018/05/28 12:23:25.199763 ctdbd[8165]: Starting CTDBD (Version 4.7.0rc3) as PID: 8165
+2018/05/28 12:23:25.199978 ctdbd[8165]: Created PID file /run/ctdb/ctdbd.pid
+2018/05/28 12:23:25.200044 ctdbd[8165]: Removed stale socket /var/run/ctdb/ctdbd.socket
+2018/05/28 12:23:25.200138 ctdbd[8165]: Listening to ctdb socket /var/run/ctdb/ctdbd.socket
+2018/05/28 12:23:25.200524 ctdbd[8165]: Starting event daemon /usr/libexec/ctdb/ctdb_eventd -e /etc/ctdb/events.d -s /var/run/ctdb/eventd.sock -P 8165 -l file:/var/log/ctdb/ctdb.log -d NOTICE
+2018/05/28 12:23:25.201084 ctdbd[8165]: connect() failed, errno=2
+2018/05/28 12:23:25.206031 ctdb-eventd[8167]: listening on /var/run/ctdb/eventd.sock
+2018/05/28 12:23:25.206241 ctdb-eventd[8167]: daemon started, pid=8167
+2018/05/28 12:23:26.201291 ctdbd[8165]: Set runstate to INIT (1)
+2018/05/28 12:23:26.390953 ctdbd[8165]: PNN is 2
+2018/05/28 12:23:26.403431 ctdbd[8165]: Vacuuming is disabled for non-volatile database ctdb.tdb
+2018/05/28 12:23:26.403520 ctdbd[8165]: Attached to database '/var/lib/ctdb/persistent/ctdb.tdb.2' with flags 0x400
+2018/05/28 12:23:26.403542 ctdbd[8165]: Ignoring persistent database 'ctdb.tdb.0'
+2018/05/28 12:23:26.403573 ctdbd[8165]: Freeze db: ctdb.tdb
+2018/05/28 12:23:26.403608 ctdbd[8165]: Set lock helper to "/usr/libexec/ctdb/ctdb_lock_helper"
+2018/05/28 12:23:26.406513 ctdbd[8165]: Set runstate to SETUP (2)
+2018/05/28 12:23:26.458684 ctdb-eventd[8167]: 00.ctdb: Set ControlTimeout to 1000000
+2018/05/28 12:23:26.458750 ctdb-eventd[8167]: 00.ctdb: Set EventScriptTimeout to 1000000
+2018/05/28 12:23:26.458763 ctdb-eventd[8167]: 00.ctdb: Set KeepaliveInterval to 2
+2018/05/28 12:23:26.458771 ctdb-eventd[8167]: 00.ctdb: Set KeepaliveLimit to 3
+2018/05/28 12:23:26.458779 ctdb-eventd[8167]: 00.ctdb: Set MonitorInterval to 6
+2018/05/28 12:23:26.458787 ctdb-eventd[8167]: 00.ctdb: Set NoIPHostOnAllDisabled to 1
+2018/05/28 12:23:26.458794 ctdb-eventd[8167]: 00.ctdb: Set RerecoveryTimeout to 5
+2018/05/28 12:23:26.458802 ctdb-eventd[8167]: 00.ctdb: Set TakeoverTimeout to 1000000
+2018/05/28 12:23:26.567569 ctdbd[8165]: Keepalive monitoring has been started
+2018/05/28 12:23:26.567682 ctdbd[8165]: Set runstate to FIRST_RECOVERY (3)
+2018/05/28 12:23:26.567875 ctdb-recoverd[8296]: monitor_cluster starting
+2018/05/28 12:23:26.570178 ctdb-recoverd[8296]: disconnected nodes reached half, there may be network partion, checking recovery lock!
+2018/05/28 12:23:26.652331 ctdbd[8165]: /usr/libexec/ctdb/ctdb_mutex_ceph_rados_helper: ping ceph cluster ok
+2018/05/28 12:23:26.652682 ctdb-recoverd[8296]: Initial recovery master set - forcing election
+2018/05/28 12:23:26.653094 ctdbd[8165]: This node (2) is now the recovery master
+2018/05/28 12:23:27.568682 ctdbd[8165]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 12:23:28.569127 ctdbd[8165]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 12:23:29.569798 ctdbd[8165]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 12:23:30.568583 ctdbd[8165]: 10.255.101.80:4379: connected to 10.255.101.81:4379 - 1 connected    # 另一个节点连接上来了
+2018/05/28 12:23:30.570878 ctdbd[8165]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 12:23:31.572146 ctdbd[8165]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 12:23:32.364173 ctdb-recoverd[8296]: Election period ended
+2018/05/28 12:23:32.364645 ctdb-recoverd[8296]: disconnected nodes reached half, there may be network partion, checking recovery lock!
+2018/05/28 12:23:32.507856 ctdbd[8165]: /usr/libexec/ctdb/ctdb_mutex_ceph_rados_helper: ping ceph cluster ok
+2018/05/28 12:23:32.510376 ctdb-recoverd[8296]: Node:2 was in recovery mode. Start recovery process
+2018/05/28 12:23:32.511225 ctdb-recoverd[8296]: Node:1 was in recovery mode. Start recovery process
+2018/05/28 12:23:32.511285 ctdb-recoverd[8296]: ../ctdb/server/ctdb_recoverd.c:1371 Starting do_recovery
+2018/05/28 12:23:32.511314 ctdb-recoverd[8296]: Attempting to take recovery lock (!/usr/libexec/ctdb/ctdb_mutex_ceph_rados_helper ceph client.admin pool-95f2cd95ce6d4318b65647f991a5e967 ctdb.7.reclock)
+2018/05/28 12:23:32.572610 ctdbd[8165]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 12:23:32.630766 ctdb-recoverd[8296]: Recovery lock taken successfully by recovery daemon
+2018/05/28 12:23:32.630880 ctdb-recoverd[8296]: ../ctdb/server/ctdb_recoverd.c:1430 Recovery initiated due to problem with node 0
+2018/05/28 12:23:32.632108 ctdb-recoverd[8296]: ../ctdb/server/ctdb_recoverd.c:1455 Recovery - created remote databases
+2018/05/28 12:23:32.634427 ctdb-recoverd[8296]: ../ctdb/server/ctdb_recoverd.c:1484 Recovery - updated flags
+2018/05/28 12:23:32.634522 ctdb-recoverd[8296]: Set recovery_helper to "/usr/libexec/ctdb/ctdb_recovery_helper"
+2018/05/28 12:23:32.643346 ctdb-recovery[8349]: Set recovery mode to ACTIVE
+2018/05/28 12:23:32.643736 ctdbd[8165]: Recovery has started
+2018/05/28 12:23:32.837033 ctdb-recovery[8349]: start_recovery event finished
+2018/05/28 12:23:32.837873 ctdb-recovery[8349]: updated VNNMAP
+2018/05/28 12:23:32.837942 ctdb-recovery[8349]: recover database 0x6645c6c4
+2018/05/28 12:23:32.838362 ctdbd[8165]: Freeze db: ctdb.tdb frozen
+2018/05/28 12:23:32.905478 ctdbd[8165]: Thaw db: ctdb.tdb generation 270509179
+2018/05/28 12:23:32.905558 ctdbd[8165]: Release freeze handle for db ctdb.tdb
+2018/05/28 12:23:32.906253 ctdb-recovery[8349]: 1 of 1 databases recovered
+2018/05/28 12:23:32.906417 ctdbd[8165]: Recovery mode set to NORMAL
+2018/05/28 12:23:33.014582 ctdbd[8165]: /usr/libexec/ctdb/ctdb_mutex_ceph_rados_helper: get lock contention 'ctdb.7.reclock' - (Device or resource busy)
+2018/05/28 12:23:33.023853 ctdb-recovery[8349]: Set recovery mode to NORMAL
+2018/05/28 12:23:33.024062 ctdbd[8165]: Recovery has finished
+2018/05/28 12:23:33.170241 ctdbd[8165]: Set runstate to STARTUP (4)
+2018/05/28 12:23:33.170402 ctdb-recovery[8349]: recovered event finished
+2018/05/28 12:23:33.170828 ctdb-recoverd[8296]: Takeover run starting
+2018/05/28 12:23:33.171073 ctdb-recoverd[8296]: Set takeover_helper to "/usr/libexec/ctdb/ctdb_takeover_helper"
+2018/05/28 12:23:33.183488 ctdb-takeover[8402]: No nodes available to host public IPs yet
+2018/05/28 12:23:33.364932 ctdb-recoverd[8296]: Takeover run completed successfully
+2018/05/28 12:23:33.365009 ctdb-recoverd[8296]: ../ctdb/server/ctdb_recoverd.c:1502 Recovery complete
+2018/05/28 12:23:33.365040 ctdb-recoverd[8296]: Resetting ban count to 0 for all nodes
+2018/05/28 12:23:33.365052 ctdb-recoverd[8296]: Just finished a recovery. New recoveries will now be suppressed for the rerecovery timeout (5 seconds)
+2018/05/28 12:23:33.365060 ctdb-recoverd[8296]: Disabling recoveries for 5 seconds
+2018/05/28 12:23:33.366976 ctdb-recoverd[8296]: Initial interface fetched
+2018/05/28 12:23:33.367214 ctdb-recoverd[8296]: Trigger takeoverrun
+2018/05/28 12:23:33.369530 ctdb-recoverd[8296]: Takeover run starting
+2018/05/28 12:23:33.385186 ctdb-takeover[8421]: No nodes available to host public IPs yet
+2018/05/28 12:23:33.573144 ctdbd[8165]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 12:23:33.573215 ctdbd[8165]: ../ctdb/server/ctdb_monitor.c:334 wait for pending recoveries to end. Wait one more second.
+2018/05/28 12:23:33.603225 ctdb-recoverd[8296]: Takeover run completed successfully
+2018/05/28 12:23:34.373490 ctdb-recoverd[8296]: Takeover run starting
+2018/05/28 12:23:34.381415 ctdb-takeover[8440]: No nodes available to host public IPs yet
+2018/05/28 12:23:34.513531 ctdb-recoverd[8296]: Takeover run completed successfully
+2018/05/28 12:23:34.573301 ctdbd[8165]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 12:23:34.573388 ctdbd[8165]: ../ctdb/server/ctdb_monitor.c:334 wait for pending recoveries to end. Wait one more second.
+2018/05/28 12:23:35.574380 ctdbd[8165]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 12:23:35.574466 ctdbd[8165]: ../ctdb/server/ctdb_monitor.c:334 wait for pending recoveries to end. Wait one more second.
+2018/05/28 12:23:36.574570 ctdbd[8165]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 12:23:36.574708 ctdbd[8165]: ../ctdb/server/ctdb_monitor.c:334 wait for pending recoveries to end. Wait one more second.
+2018/05/28 12:23:37.575672 ctdbd[8165]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 12:23:37.575860 ctdbd[8165]: ../ctdb/server/ctdb_monitor.c:334 wait for pending recoveries to end. Wait one more second.
+2018/05/28 12:23:38.366209 ctdb-recoverd[8296]: Reenabling recoveries after timeout
+2018/05/28 12:23:38.585052 ctdbd[8165]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 12:23:38.585424 ctdbd[8165]: ../ctdb/server/ctdb_monitor.c:334 wait for pending recoveries to end. Wait one more second.
+2018/05/28 12:23:39.585490 ctdbd[8165]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 12:23:39.585598 ctdbd[8165]: ../ctdb/server/ctdb_monitor.c:334 wait for pending recoveries to end. Wait one more second.
+2018/05/28 12:23:40.585847 ctdbd[8165]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 12:23:40.585979 ctdbd[8165]: ../ctdb/server/ctdb_monitor.c:334 wait for pending recoveries to end. Wait one more second.
+2018/05/28 12:23:41.586328 ctdbd[8165]: CTDB_WAIT_UNTIL_RECOVERED
+2018/05/28 12:23:41.586493 ctdbd[8165]: ctdb_recheck_persistent_health: OK[1] FAIL[0]
+2018/05/28 12:23:41.586534 ctdbd[8165]: ../ctdb/server/ctdb_takeover.c:1577 vnn->pnn: -1, ctdb->pnn: 2, interface: __none__
+2018/05/28 12:23:41.586622 ctdbd[8165]: ../ctdb/server/ctdb_takeover.c:1586 Force releasing IP 10.255.101.243/24 on interface __none__ on this node
+2018/05/28 12:23:41.996261 ctdb-eventd[8167]: 10.interface: ---releaseip block in---
+2018/05/28 12:23:41.996385 ctdb-eventd[8167]: 10.interface: Cannot get device settings: No such device
+2018/05/28 12:23:41.996420 ctdb-eventd[8167]: 10.interface: Cannot get wake-on-lan settings: No such device
+2018/05/28 12:23:41.996488 ctdb-eventd[8167]: 10.interface: Cannot get message level: No such device
+2018/05/28 12:23:41.996521 ctdb-eventd[8167]: 10.interface: Cannot get link status: No such device
+2018/05/28 12:23:41.996545 ctdb-eventd[8167]: 10.interface: __none__ state is down, can not add ip to it
+2018/05/28 12:23:41.996567 ctdb-eventd[8167]: 10.interface: WARNING: Unable to determine interface for IP 10.255.101.243
+2018/05/28 12:23:41.996589 ctdb-eventd[8167]: 10.interface: __none__ down & vip NOT exist, do umount
+2018/05/28 12:23:42.097732 ctdbd[8165]: ../ctdb/server/ctdb_takeover.c:1633 Released 0 public IPs
+2018/05/28 12:23:42.097827 ctdbd[8165]: Running the "startup" event.
+2018/05/28 12:23:42.381556 ctdbd[8165]: startup event OK - enabling monitoring
+2018/05/28 12:23:42.381708 ctdbd[8165]: Set runstate to RUNNING (5)
+2018/05/28 12:23:44.175479 ctdb-recoverd[8296]: Node 1 has changed flags - now 0x0  was 0x2
+2018/05/28 12:23:44.385947 ctdb-recoverd[8296]: Takeover run starting
+2018/05/28 12:23:44.392863 ctdbd[8165]: Release of IP 10.255.101.243/24 on interface __none__  node:1
+2018/05/28 12:23:44.394091 ctdbd[8165]: Monitoring event was cancelled
+2018/05/28 12:23:44.600562 ctdb-eventd[8167]: 10.interface: ---releaseip block in---
+2018/05/28 12:23:44.600646 ctdb-eventd[8167]: 10.interface: Cannot get device settings: No such device
+2018/05/28 12:23:44.600676 ctdb-eventd[8167]: 10.interface: Cannot get wake-on-lan settings: No such device
+2018/05/28 12:23:44.600693 ctdb-eventd[8167]: 10.interface: Cannot get message level: No such device
+2018/05/28 12:23:44.600706 ctdb-eventd[8167]: 10.interface: Cannot get link status: No such device
+2018/05/28 12:23:44.600719 ctdb-eventd[8167]: 10.interface: __none__ state is down, can not add ip to it
+2018/05/28 12:23:44.600739 ctdb-eventd[8167]: 10.interface: WARNING: Unable to determine interface for IP 10.255.101.243
+2018/05/28 12:23:44.600760 ctdb-eventd[8167]: 10.interface: __none__ down & vip NOT exist, do umount
+2018/05/28 12:23:47.204354 ctdbd[8165]: monitor event OK - node re-enabled
+2018/05/28 12:23:47.204466 ctdbd[8165]: Node became HEALTHY. Ask recovery master to reallocate IPs    # 节点健康的打印
+2018/05/28 12:23:47.207735 ctdb-recoverd[8296]: Node 2 has changed flags - now 0x0  was 0x2
+2018/05/28 12:23:51.350862 ctdb-recoverd[8296]: Takeover run completed successfully
+2018/05/28 12:23:51.357120 ctdb-recoverd[8296]: Takeover run starting
+2018/05/28 12:23:51.364586 ctdbd[8165]: Release of IP 10.255.101.243/24 on interface __none__  node:1
+2018/05/28 12:23:51.595410 ctdb-eventd[8167]: 10.interface: ---releaseip block in---
+2018/05/28 12:23:51.595575 ctdb-eventd[8167]: 10.interface: Cannot get device settings: No such device
+2018/05/28 12:23:51.595633 ctdb-eventd[8167]: 10.interface: Cannot get wake-on-lan settings: No such device
+2018/05/28 12:23:51.595954 ctdb-eventd[8167]: 10.interface: Cannot get message level: No such device
+2018/05/28 12:23:51.595979 ctdb-eventd[8167]: 10.interface: Cannot get link status: No such device
+2018/05/28 12:23:51.595993 ctdb-eventd[8167]: 10.interface: __none__ state is down, can not add ip to it
+2018/05/28 12:23:51.596122 ctdb-eventd[8167]: 10.interface: WARNING: Unable to determine interface for IP 10.255.101.243
+2018/05/28 12:23:51.596144 ctdb-eventd[8167]: 10.interface: __none__ down & vip NOT exist, do umount
+2018/05/28 12:23:51.794812 ctdb-recoverd[8296]: Takeover run completed successfully
+ 
+
+异常处理
+当错误出现的时候，均会在log里留下痕迹。EFS1.0除了服务log外（当然有些情况也要用systemctl status xxx等去看），主要的log就两个：ctdb.log和python_scripts.log。
+
+推荐先看python_scripts.log，再看ctdb.log。首先因为python_scripts.log打印比较少，如果是mount、umount之类的问题，均会在这里面留下打印，以及会执行xfs_repair等。
+
+然后从ctdb.log寻找错误是怎么发生的，目录不可访问还是服务进程异常。
+
+下面是常见的几种错误日志：
+
+# 疑是网络分区出现：
+ctdb-recoverd[5093]: disconnected nodes reached half, there may be network partion, checking recovery lock!
+ 
+# nfs端口绑定失败：
+60.nfs: rpcinfo: RPC: Program not registered
+ 
+# samba端口监听失败：
+50.samba: samba not listening on TCP port 139
+ 
+# 目录检查失败：
+60.nfs: ERROR: nfs directory "/sdsfs/nfs30g-10" not available
+ 
+# 挂载失败：
+mount /dev/disk/by-id/wwn-0x6005853012c46b7374d9067c00000000 to /sdsfs/smb_share1 failed on first trial.
+ 
+# xfs_repair失败：
+xfs_repair on block /dev/disk/by-id/wwn-0x60058530155e9a84bd11acb600000000 failed.
+ 
+# 节点掉线：
+ctdbd[50]: 10.252.2.201:4379: node 10.252.2.202:4379 is dead: 1 connected
+## --------当前节点ip----------------掉线节点ip------------------仍与几个节点相连
+ 
+# 块设备在恢复时候没找到，多见于卷特别多（几百个，xdc恢复没那么快），本轮恢复失败后下一轮一般会成功：
+grep "not exist, cleaning before next round" /var/log/sds/nas/ctdb/python_scripts.log
+ 
+# 接管ip失败
+grep "takeip event failed" /var/log/sds/nas/ctdb/ctdb.log
+ 
+ 
+
+代码举例
+CTDB代码一些值得注意的地方：
+
+周期性的事件用tevent_add_timer来处理：
+
+void ctdb_start_keepalive(struct ctdb_context *ctdb)
+{
+    struct tevent_timer *te;
+ 
+    ctdb->keepalive_ctx = talloc_new(ctdb);
+    CTDB_NO_MEMORY_FATAL(ctdb, ctdb->keepalive_ctx);
+ 
+    te = tevent_add_timer(ctdb->ev, ctdb->keepalive_ctx,
+                  timeval_current_ofs(ctdb->tunable.keepalive_interval, 0),
+                  ctdb_check_for_dead_nodes, ctdb);
+    CTDB_NO_MEMORY_FATAL(ctdb, te);
+ 
+    DEBUG(DEBUG_NOTICE,("Keepalive monitoring has been started\n"));
+ 
+    if (ctdb->tunable.allow_mixed_versions == 1) {
+        DEBUG(DEBUG_WARNING,
+              ("CTDB cluster with mixed versions configured\n"));
+    }
+}
+事件、脚本的处理都是异步的，用ctdb_event_script_callback来处理：
+
+static void ctdb_check_health(struct tevent_context *ev,
+                  struct tevent_timer *te,
+                  struct timeval t, void *private_data)
+{
+    struct ctdb_context *ctdb = talloc_get_type(private_data, struct ctdb_context);
+    bool skip_monitoring = false;
+    int ret = 0;
+ 
+    if (ctdb->recovery_mode != CTDB_RECOVERY_NORMAL ||
+        ctdb->monitor->monitoring_mode == CTDB_MONITORING_DISABLED) {
+        skip_monitoring = true;
+    } else {
+        if (ctdb_db_all_frozen(ctdb)) {
+            DEBUG(DEBUG_ERR,
+                  ("Skip monitoring since databases are frozen\n"));
+            skip_monitoring = true;
+        }
+    }
+ 
+    if (skip_monitoring) {
+        tevent_add_timer(ctdb->ev, ctdb->monitor->monitor_context,
+                 timeval_current_ofs(ctdb->monitor->next_interval, 0),
+                 ctdb_check_health, ctdb);
+        return;
+    }
+ 
+    ret = ctdb_event_script_callback(ctdb,
+                     ctdb->monitor->monitor_context,
+                     ctdb_health_callback,
+                     ctdb, CTDB_EVENT_MONITOR, "%s", "");
+    if (ret != 0) {
+        DEBUG(DEBUG_ERR,("Unable to launch monitor event script\n"));
+        ctdb->monitor->next_interval = 5;
+        tevent_add_timer(ctdb->ev, ctdb->monitor->monitor_context,
+                 timeval_current_ofs(5, 0),
+                 ctdb_check_health, ctdb);
+    }
+}
+ctdb_mutex_ceph_rados_helper.c 和 ctdb_etcd_lock全文件。
